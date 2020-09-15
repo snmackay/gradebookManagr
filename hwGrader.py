@@ -4,7 +4,7 @@
 # -download the week's grades from the google sheet as a .csv csv_file
 # -rename the file to 'hw.csv'
 # -place this file into the same folder with 'hwgrader.py'
-# -make sure 'Jude.csv'
+# -make sure '____.csv'
 # -make sure python3 is installed
 # -cd to the directory containing the files from your terminal
 # -run the program with 'python3 hwGrader.py'
@@ -13,16 +13,16 @@
 
 import csv
 
-def importJude():
-    with open('./Jude.csv') as csv_file:
+def import1():
+    with open('./____.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         array_boii=[]
         for row in csv_reader:
             array_boii.append(row)
     return array_boii
 
-def importAlaa():
-    with open('./Alaa.csv') as csv_file:
+def import2():
+    with open('./____.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         array_boii=[]
         for row in csv_reader:
@@ -86,29 +86,29 @@ def gradeSum(grades):
     return returner
 
 def whichSection(students,judeStudents,alaaStudents):
-    judeClass=[]
-    alaaClass=[]
+    1Class=[]
+    2Class=[]
     snmackayClass=[]
     mostafaClass=[]
 
     for a in students:
-        for b in judeStudents:
+        for b in 1Students:
             if b==a[3]:
-                judeClass.append(a)
+                1Class.append(a)
     for a in students:
-        for b in alaaStudents:
+        for b in 2Students:
             if b==a[3]:
-                alaaClass.append(a)
+                2Class.append(a)
 
-    with open("gradesJude.csv", "w", newline="") as f:
+    with open("grades1.csv", "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["Last Name","First Name","ubit name","person #", " ","Q1","Q2","Q3","Q4"," ","Total"])
-        writer.writerows(judeClass)
+        writer.writerows(1Class)
 
-    with open("gradesAlaa.csv", "w", newline="") as g:
+    with open("grades2.csv", "w", newline="") as g:
         writer = csv.writer(g)
         writer.writerow(["Last Name","First Name","ubit name","person #", " ","Q1","Q2","Q3","Q4"," ","Total"])
-        writer.writerows(alaaClass)
+        writer.writerows(2Class)
 
 def ungraded(ungradedKids):
 
@@ -117,13 +117,13 @@ def ungraded(ungradedKids):
         writer.writerows(ungradedKids)
 
 def main ():
-    roster1=importJude()
-    roster2=importAlaa()
+    roster1=import1()
+    roster2=import2()
     grades=importhw()
-    judeStudents =cleaner(roster1)
-    alaaStudents =cleaner(roster2)
+    1Students =cleaner(roster1)
+    2Students =cleaner(roster2)
     listy=gradeSum(grades)
-    whichSection(listy[0],judeStudents,alaaStudents)
+    whichSection(listy[0],1Students,2Students)
     ungraded(listy[1])
 
 if __name__ == "__main__":
