@@ -1,8 +1,8 @@
 import csv
 
 
-def importJude():
-    with open('./Jude.csv') as csv_file:
+def import1():
+    with open('./____.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         array_boii=[]
         for row in csv_reader:
@@ -38,7 +38,7 @@ def printer(i,name):
         writer.writerows(i)
 
 def main():
-    list=importJude()
+    list=import1()
     sections=sectionSort(list)
     printer(sections[0],"C2.csv")
     printer(sections[1],"C4.csv")
